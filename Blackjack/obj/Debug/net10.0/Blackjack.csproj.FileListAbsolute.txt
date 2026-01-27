@@ -1,0 +1,15 @@
+C:\Users\asean\source\repos\Blackjack\Blackjack\bin\Debug\net10.0\Blackjack.exe
+C:\Users\asean\source\repos\Blackjack\Blackjack\bin\Debug\net10.0\Blackjack.deps.json
+C:\Users\asean\source\repos\Blackjack\Blackjack\bin\Debug\net10.0\Blackjack.runtimeconfig.json
+C:\Users\asean\source\repos\Blackjack\Blackjack\bin\Debug\net10.0\Blackjack.dll
+C:\Users\asean\source\repos\Blackjack\Blackjack\bin\Debug\net10.0\Blackjack.pdb
+C:\Users\asean\source\repos\Blackjack\Blackjack\obj\Debug\net10.0\Blackjack.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asean\source\repos\Blackjack\Blackjack\obj\Debug\net10.0\Blackjack.AssemblyInfoInputs.cache
+C:\Users\asean\source\repos\Blackjack\Blackjack\obj\Debug\net10.0\Blackjack.AssemblyInfo.cs
+C:\Users\asean\source\repos\Blackjack\Blackjack\obj\Debug\net10.0\Blackjack.csproj.CoreCompileInputs.cache
+C:\Users\asean\source\repos\Blackjack\Blackjack\obj\Debug\net10.0\Blackjack.sourcelink.json
+C:\Users\asean\source\repos\Blackjack\Blackjack\obj\Debug\net10.0\Blackjack.dll
+C:\Users\asean\source\repos\Blackjack\Blackjack\obj\Debug\net10.0\refint\Blackjack.dll
+C:\Users\asean\source\repos\Blackjack\Blackjack\obj\Debug\net10.0\Blackjack.pdb
+C:\Users\asean\source\repos\Blackjack\Blackjack\obj\Debug\net10.0\Blackjack.genruntimeconfig.cache
+C:\Users\asean\source\repos\Blackjack\Blackjack\obj\Debug\net10.0\ref\Blackjack.dll
