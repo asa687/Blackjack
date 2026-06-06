@@ -15,10 +15,12 @@ public class Program
 
     public static void gameLoop(Deck deck, Hand playerHand, Hand dealerHand)
     {
-        bool gameOver = false;
+        bool gameOver = false; 
+        bool reveal = true;
         while (!gameOver)
         {
-            displayHands(playerHand, dealerHand, true);
+            displayHands(playerHand, dealerHand, reveal); 
+            reveal = false;
             Console.WriteLine("Choose an action: 1) Hit 2) Stand 3) Reset Game");
             string choice = Console.ReadLine();
 
@@ -38,7 +40,9 @@ public class Program
                 default:
                     Console.WriteLine("Invalid choice. Please choose again.");
                     break;
-            }
+            }  
+            displayHands(playerHand, dealerHand, reveal);
+
         }
     }
 
