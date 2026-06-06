@@ -16,34 +16,46 @@ public class Program
     public static void gameLoop(Deck deck, Hand playerHand, Hand dealerHand)
     {
         bool gameOver = false; 
-        bool reveal = true;
-        while (!gameOver)
+        while(!gameOver)
         {
-            displayHands(playerHand, dealerHand, reveal); 
-            reveal = false;
-            Console.WriteLine("Choose an action: 1) Hit 2) Stand 3) Reset Game");
-            string choice = Console.ReadLine();
-
-            switch (choice)
+            bool roundOver = false; 
+            bool reveal = true;
+            while (!roundOver)
             {
-                case "1":
-                    hit(deck, playerHand, dealerHand);
-                    gameOver = checkScore(playerHand, dealerHand);
-                    break;
-                case "2":
-                    stand(deck, playerHand, dealerHand);
-                    gameOver = checkScore(playerHand, dealerHand);
-                    break;
-                case "3":
-                    resetGame(deck, playerHand, dealerHand);
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice. Please choose again.");
-                    break;
-            }  
-            displayHands(playerHand, dealerHand, reveal);
-
+                displayHands(playerHand, dealerHand, reveal); 
+                reveal = false;
+                IOOutput(1);
+                string choice = IOInput();
+                switch (choice)
+                {
+                    case "1":
+                        hit(deck, playerHand, dealerHand);
+                        roundOver = checkScore(playerHand, dealerHand);
+                        break;
+                    case "2":
+                        stand(deck, playerHand, dealerHand);  
+                        displayHands(playerHand, dealerHand, reveal);
+                        checkEndScore(playerHand, dealerHand);
+                        roundOver = true;
+                        break;
+                    case "3":
+                        resetGame(deck, playerHand, dealerHand);
+                        break; 
+                    case "4":
+                        IOOutput(2);
+                        roundOver = true;
+                        gameOver = true;
+                        break;
+                    default:
+                        IOOutput(3);
+                        break;
+                }  
+            } 
+            resetGame(deck, playerHand, dealerHand);
+            
         }
+
+
     }
 
     public static void resetGame(Deck deck, Hand playerHand, Hand dealerHand)
@@ -80,14 +92,14 @@ public class Program
 
     public static void displayHands(Hand playerHand, Hand dealerHand, bool hideDealerCard)
     {
-        Console.WriteLine("Player's Hand:");
+        IOOutput(4);
         foreach (Card card in playerHand.getCardsInHand())
         {
             Console.WriteLine($"{card.GetRank()} of {card.GetSuit()}");
         }
         Console.WriteLine($"Total Value: {playerHand.calculateHandValue()}");
 
-        Console.WriteLine("\nDealer's Hand:");
+        IOOutput(5);
         if (hideDealerCard)
         {
             Card firstCard = dealerHand.getCardsInHand()[0];
@@ -108,27 +120,97 @@ public class Program
     {
         if(dealerHand.calculateHandValue() > 21)
         {
-            Console.WriteLine("Dealer bust"); 
+            IOOutput(6);
             return true;
         } 
         else if(playerHand.calculateHandValue() > 21)
         {
-            Console.WriteLine("Player bust");  
+            IOOutput(7);
             return true; 
         } 
         else if(playerHand.calculateHandValue() == 21)
         {
-            Console.WriteLine("Blackjack! Player wins");  
+            IOOutput(8);  
             return true;
         } 
         else if(dealerHand.calculateHandValue() == 21)
         {
-            Console.WriteLine("Blackjack! Dealer wins"); 
+            IOOutput(9); 
             return true;
         }
         else
         {
             return false;
         }
+    } 
+
+    public static void checkEndScore(Hand playerHand, Hand dealerHand)
+    {
+        int playerScore = playerHand.calculateHandValue();
+        int dealerScore = dealerHand.calculateHandValue();
+
+        if (playerScore > dealerScore)
+        {
+            IOOutput(10);
+        }
+        else if (dealerScore > playerScore)
+        {
+            IOOutput(11);
+        }
+        else
+        {
+            IOOutput(12);
+        }
+    } 
+
+    private static void IOOutput(int input)
+    {
+        switch (input)
+        {
+            case 1:
+                Console.WriteLine("Choose an action: 1) Hit 2) Stand 3) Reset Game");
+                break;
+            case 2:
+                Console.WriteLine("Game over.");
+                break;
+            case 3:
+                Console.WriteLine("Invalid choice. Please choose again.");
+                break;
+            case 4:
+                Console.WriteLine("Player's Hand:");
+                break; 
+            case 5:
+                Console.WriteLine("\nDealer's Hand:");
+                break; 
+            case 6: 
+                Console.WriteLine("Dealer bust"); 
+                break; 
+            case 7: 
+                Console.WriteLine("Player bust");  
+                break; 
+            case 8: 
+                Console.WriteLine("Blackjack! Player wins");  
+                break; 
+            case 9: 
+                Console.WriteLine("Blackjack! Dealer wins"); 
+                break; 
+            case 10:
+                Console.WriteLine("Player wins!");
+                break; 
+            case 11: 
+                Console.WriteLine("Dealer wins!");
+                break; 
+            case 12: 
+                Console.WriteLine("It's a tie!");
+                break;
+            default:
+                Console.WriteLine("Invalid choice. Please choose again.");
+                break;
+        }
+    } 
+
+    private static String IOInput()
+    {
+        return Console.ReadLine();
     }
 }
