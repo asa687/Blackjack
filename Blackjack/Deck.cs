@@ -31,8 +31,19 @@ public class Deck
 
     public void shuffleDeck()
     { 
-        List<Card> cards = decklist.ToList();
-        cards.Shuffle(); 
-        decklist = new Stack<Card>(cards);
+        List<Card> cards = decklist.ToList(); 
+        Random rng = new Random(); 
+        for (int i = cards.Count - 1; i > 0; i--)
+        {
+            int j = rng.Next(0, i + 1); 
+            Card temp = cards[i];
+            cards[i] = cards[j];
+            cards[j] = temp;
+        } 
+        decklist.Clear();  
+        foreach (Card card in cards)
+        {
+            decklist.Push(card);
+        }
     }
 }
